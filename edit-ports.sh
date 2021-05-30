@@ -1,5 +1,5 @@
 #!/bin/bash
-# Mod by Zuan We Lose
+# GASSS 🔥🔥🔥
 clear
 echo -e "\e[0m                                                   "
 echo -e "\e[94m[][][]======================================[][][]"
