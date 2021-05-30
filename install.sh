@@ -76,17 +76,12 @@ apt-get -y install nano iptables-persistent dnsutils screen whois ngrep unzip un
 
 echo "clear" >> .bashrc
 echo 'echo -e ""' >> .bashrc
-echo 'echo -e "      ┈┈╭━╱▔▔▔▔╲━╮┈┈┈  " | lolcat' >> .bashrc
-echo 'echo -e "      ┈┈╰╱╭▅╮╭▅╮╲╯┈┈┈          " | lolcat ' >> .bashrc
-echo 'echo -e "      ╳┈┈▏╰┈▅▅┈╯▕┈┈┈┈           " | lolcat ' >> .bashrc
-echo 'echo -e "      ┈┈┈╲┈╰━━╯┈╱┈┈╳┈   " | lolcat ' >> .bashrc
-echo 'echo -e "      ┈┈┈╱╱▔╲╱▔╲╲┈┈┈┈     " | lolcat ' >> .bashrc
-echo 'echo -e "      ┈╭━╮▔▏┊┊▕▔╭━╮┈╳ " | lolcat ' >> .bashrc
-echo 'echo -e "      ┈┃┊┣▔╲┊┊╱▔┫┊┃┈┈  " | lolcat ' >> .bashrc
-echo 'echo -e "      ┈╰━━━━╲╱━━━━╯┈╳   " | lolcat ' >> .bashrc
-echo 'echo -e "                   JSTFREENET " | lolcat' >> .bashrc
+echo 'echo -e " █▀▀█ █▀▀█ █▀▀▀█ █▀▀▀█ █▀▀▀█ " | lolcat' >> .bashrc
+echo 'echo -e " █░▄▄ █▄▄█ ▀▀▀▄▄ ▀▀▀▄▄ ▀▀▀▄▄ " | lolcat' >> .bashrc
+echo 'echo -e " █▄▄█ █░▒█ █▄▄▄█ █▄▄▄█ █▄▄▄█ " | lolcat' >> .bashrc
+echo 'echo -e "@NGE_GASSS" | lolcat' >> .bashrc
 echo 'echo -e "welcome to the server $HOSTNAME" | lolcat' >> .bashrc
-echo 'echo -e "Script mod Zuan We Lose" | lolcat' >> .bashrc
+echo 'echo -e "MAINTENANCEZ" | lolcat' >> .bashrc
 echo 'echo -e "Type menu to display a list of commands" | lolcat' >> .bashrc
 echo 'echo -e ""' >> .bashrc
 
@@ -96,7 +91,7 @@ rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/nginx.conf"
 mkdir -p /home/vps/public_html
-echo "<pre>Setup by @NGE_GASSS</pre>" > /home/vps/public_html/index.html
+echo "<pre>Rebuild by Mantenancez</pre>" > /home/vps/public_html/index.html
 wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/vps.conf"
 
 # install openvpn
@@ -390,19 +385,17 @@ echo "Webmin   : http://$MYIP:10000/"  | tee -a log-install.txt
 echo "Timezone : Asia/Jakarta (GMT +7)"  | tee -a log-install.txt
 echo "IPv6     : [off]"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
-echo "Original Script by Fornesia, Rzengineer & Fawzya"  | tee -a log-install.txt
-echo "Modified by Zuan We Lose"  | tee -a log-install.txt
+echo "GASSS 🔥🔥🔥"  | tee -a log-install.txt
+echo "Rebuild by Maintenancez"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Installation Log --> /root/log-install.txt"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo -e "=============================" | tee -a log-install.txt
 echo -e "Join us : " | tee -a log-install.txt
-echo -e "https://t.me/JSTFREENET" | tee -a log-install.txt
-echo -e "https://t.me/freedom_reborn" | tee -a log-install.txt
-echo -e "https://t.me/xtconfig" | tee -a log-install.txt
-echo -e "https://t.me/nge_gasss" | tee -a log-install.txt
-echo -e "https://t.me/PXGI_GRUP" | tee -a log-install.txt
-echo -e "https://t.me/configarea" | tee -a log-install.txt
+echo -e "https://t.me/NGE_GASSS" | tee -a log-install.txt
+echo -e "https://t.me/NGE_GAZZZ" | tee -a log-install.txt
+echo -e "https://t.me/MAINTEBOT" | tee -a log-install.txt
+echo -e "https://t.me/MAINTENANCEZ" | tee -a log-install.txt
 echo "==========================================="  | tee -a log-install.txt
 cd
 rm -f /root/install.sh
