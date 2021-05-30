@@ -1,24 +1,23 @@
 #!/bin/bash
 #
-# Original script by fornesia, rzengineer and fawzya 
-# Mod By Zuan We Lose
+# GASSS 🔥🔥🔥
 # 
 # ==================================================
 
 # initializing var
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
-MYIP=$(wget -qO- ipv4.icanhazip.com);
+MYIP=$(wget -qO- ipv4.ifconfig.co);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
 
 # company name details
 country=ID
-state=JATENG
-locality=GROBOGAN
-organization=ZUANWELOSE
-organizationalunit=JSTHUNTER
-commonname=JSTFREENET
-email=zuan@gmail.com
+state=BANTEN
+locality=TANGERANG
+organization=@NGE_GASSS
+organizationalunit=@NGE_GASSS
+commonname=@NGE_GASSS
+email=maintebot@gmail.com
 
 # configure rc.local
 cat <<EOF >/etc/rc.local
@@ -95,23 +94,23 @@ echo 'echo -e ""' >> .bashrc
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/nstfreenet/debian/main/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/nginx.conf"
 mkdir -p /home/vps/public_html
-echo "<pre>Setup by JSTFREENET</pre>" > /home/vps/public_html/index.html
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/nstfreenet/debian/main/vps.conf"
+echo "<pre>Setup by @NGE_GASSS</pre>" > /home/vps/public_html/index.html
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/vps.conf"
 
 # install openvpn
 apt-get -y install openvpn easy-rsa openssl
 cp -r /usr/share/easy-rsa/ /etc/openvpn
 mkdir /etc/openvpn/easy-rsa/keys
 sed -i 's|export KEY_COUNTRY="US"|export KEY_COUNTRY="ID"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_PROVINCE="CA"|export KEY_PROVINCE="JATENG"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_CITY="SanFrancisco"|export KEY_CITY="GROBOGAN"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_ORG="Fort-Funston"|export KEY_ORG="ZuanWeLose"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_EMAIL="me@myhost.mydomain"|export KEY_EMAIL="Zuan@gmail.com"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_OU="MyOrganizationalUnit"|export KEY_OU="ZuanWeLose"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_NAME="EasyRSA"|export KEY_NAME="ZuanWeLose"|' /etc/openvpn/easy-rsa/vars
-sed -i 's|export KEY_OU=changeme|export KEY_OU="ZuanWeLose" |' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_PROVINCE="CA"|export KEY_PROVINCE="BANTEN"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_CITY="SanFrancisco"|export KEY_CITY="TANGERANG"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_ORG="Fort-Funston"|export KEY_ORG="Maintenancez"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_EMAIL="me@myhost.mydomain"|export KEY_EMAIL="maintebot@gmail.com"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_OU="MyOrganizationalUnit"|export KEY_OU="Maintenancez"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_NAME="EasyRSA"|export KEY_NAME="Maintenancez"|' /etc/openvpn/easy-rsa/vars
+sed -i 's|export KEY_OU=changeme|export KEY_OU="Maintenancez" |' /etc/openvpn/easy-rsa/vars
 
 # Create Diffie-Helman Pem
 openssl dhparam -out /etc/openvpn/dh2048.pem 2048
@@ -141,27 +140,27 @@ chmod +x /etc/openvpn/ca.crt
 
 # server settings
 cd /etc/openvpn/
-wget -O /etc/openvpn/server.conf "https://raw.githubusercontent.com/nstfreenet/debian/main/server.conf"
+wget -O /etc/openvpn/server.conf "https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/server.conf"
 systemctl start openvpn@server
 sysctl -w net.ipv4.ip_forward=1
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 iptables -t nat -I POSTROUTING -s 192.168.100.0/24 -o eth0 -j MASQUERADE
 iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE
 iptables-save > /etc/iptables.up.rules
-wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/nstfreenet/debian/main/iptables"
+wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/iptables"
 chmod +x /etc/network/if-up.d/iptables
 sed -i 's|LimitNPROC|#LimitNPROC|g' /lib/systemd/system/openvpn@.service
 systemctl daemon-reload
 /etc/init.d/openvpn restart
 
 # openvpn config
-wget -O /etc/openvpn/client.ovpn "https://raw.githubusercontent.com/nstfreenet/debian/main/client.conf"
+wget -O /etc/openvpn/client.ovpn "https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/client.conf"
 sed -i $MYIP2 /etc/openvpn/client.ovpn;
 echo '<ca>' >> /etc/openvpn/client.ovpn
 cat /etc/openvpn/ca.crt >> /etc/openvpn/client.ovpn
 echo '</ca>' >> /etc/openvpn/client.ovpn
 cp client.ovpn /home/vps/public_html/
-wget -O /etc/openvpn/openvpnssl.ovpn "https://raw.githubusercontent.com/nstfreenet/debian/main/openvpnssl.conf"
+wget -O /etc/openvpn/openvpnssl.ovpn "https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/openvpnssl.conf"
 echo '<ca>' >> /etc/openvpn/openvpnssl.ovpn
 cat /etc/openvpn/ca.crt >> /etc/openvpn/openvpnssl.ovpn
 echo '</ca>' >> /etc/openvpn/openvpnssl.ovpn
@@ -169,9 +168,9 @@ cp openvpnssl.ovpn /home/vps/public_html/
 
 # install badvpn
 cd
-wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/nstfreenet/debian/main/badvpn-udpgw"
+wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/badvpn-udpgw"
 if [ "$OS" == "x86_64" ]; then
-  wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/nstfreenet/debian/main/badvpn-udpgw64"
+  wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/badvpn-udpgw64"
 fi
 sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200' /etc/rc.local
 chmod +x /usr/bin/badvpn-udpgw
@@ -191,7 +190,7 @@ echo "/usr/sbin/nologin" >> /etc/shells
 
 # install squid
 apt-get -y install squid
-wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/nstfreenet/debian/main/squid3.conf"
+wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/squid3.conf"
 sed -i $MYIP2 /etc/squid/squid.conf;
 
 # install webmin
@@ -238,7 +237,7 @@ cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 # configure stunnel
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 cd /etc/stunnel/
-wget -O /etc/stunnel/ssl.conf "https://raw.githubusercontent.com/nstfreenet/debian/main/ssl.conf"
+wget -O /etc/stunnel/ssl.conf "https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/ssl.conf"
 sed -i $MYIP2 /etc/stunnel/ssl.conf;
 cp ssl.conf /home/vps/public_html/
 cd
@@ -253,14 +252,14 @@ apt-get -y install fail2ban
 # install ddos deflate
 cd
 apt-get -y install dnsutils dsniff
-wget https://raw.githubusercontent.com/nstfreenet/debian/main/ddos-deflate-master.zip
+wget https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/ddos-deflate-master.zip
 unzip ddos-deflate-master.zip
 cd ddos-deflate-master
 ./install.sh
 rm -rf /root/ddos-deflate-master.zip
 
 # banner /etc/bnr
-wget -O /etc/banner.txt "https://raw.githubusercontent.com/nstfreenet/debian/main/banner.txt"
+wget -O /etc/banner.txt "https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/banner.txt"
 sed -i 's@#Banner@Banner@g' /etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/banner.txt"@g' /etc/default/dropbear
 
@@ -270,11 +269,11 @@ apt-get install -y libxml-parser-perl
 
 # download script
 cd /usr/bin
-wget -O menu "https://raw.githubusercontent.com/nstfreenet/debian/main/menu.sh"
-wget -O edit "https://raw.githubusercontent.com/nstfreenet/debian/main/edit-ports.sh"
-wget -O edit-dropbear "https://raw.githubusercontent.com/nstfreenet/debian/main/edit-dropbear.sh"
-wget -O edit-openssh "https://raw.githubusercontent.com/nstfreenet/debian/main/edit-openssh.sh"
-wget -O edit-openvpn "https://raw.githubusercontent.com/nstfreenet/debian/main/edit-openvpn.sh"
+wget -O menu "https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/menu.sh"
+wget -O edit "https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/edit-ports.sh"
+wget -O edit-dropbear "https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/edit-dropbear.sh"
+wget -O edit-openssh "https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/edit-openssh.sh"
+wget -O edit-openvpn "https://raw.githubusercontent.com/maintebot/GASSSH-WARNA/main/edit-openvpn.sh"
 wget -O edit-squid3 "https://raw.githubusercontent.com/nstfreenet/debian/main/edit-squid3.sh"
 wget -O edit-stunnel4 "https://raw.githubusercontent.com/nstfreenet/debian/main/edit-stunnel4.sh"
 wget -O show-ports "https://raw.githubusercontent.com/nstfreenet/debian/main/show-ports.sh"
